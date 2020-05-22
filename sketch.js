@@ -5,9 +5,11 @@ function setup() {
   fixedRect = createSprite(400, 100, 50, 80);
   fixedRect.shapeColor = "green";
   fixedRect.debug = true;
-  movingRect = createSprite(400, 800,80,30);
+  movingRect = createSprite(400, 700,80,30);
   movingRect.shapeColor = "green";
   movingRect.debug = true;
+
+  edges = createEdgeSprites();
 
   movingRect.velocityY = -5;
   fixedRect.velocityY = +5;
@@ -16,5 +18,9 @@ function setup() {
 function draw() {
   background(0,0,0); 
   bounceOff(movingRect, fixedRect);
+  bounceOff(movingRect, edges[2]);
+  bounceOff(movingRect, edges[3]);
+  bounceOff(fixedRect, edges[2]);
+  bounceOff(fixedRect, edges[3]);
   drawSprites();
 }
